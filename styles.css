@@ -123,4 +123,49 @@ main{position:relative;z-index:1}
  .lb-stage img{max-height:calc(100% - 80px)}
  .foot{flex-direction:column;align-items:center}
 }
+/* ---- Cross-site crossfade: Aspection -> Omnidra (end frame = top of omnidraglobal.com) ---- */
+.xf{--out:1;--bg:1;--in:1;--nav:1;position:relative;z-index:1;height:220vh}
+.xf-stage{position:sticky;top:0;height:100vh;overflow:hidden;isolation:isolate}
+.xf-bg{position:absolute;inset:0;pointer-events:none}
+.xf-bg-from{opacity:calc(1 - var(--bg));background:radial-gradient(70% 42% at 50% 44%,rgba(168,85,247,.30),transparent 70%),radial-gradient(50% 30% at 78% 62%,rgba(34,211,238,.16),transparent 70%),radial-gradient(45% 28% at 22% 30%,rgba(244,114,182,.14),transparent 70%)}
+.xf-bg-to{background:#06070a;opacity:var(--bg);overflow:hidden}
+.xo-glow{position:absolute;inset:-20%;opacity:.55;background:radial-gradient(40% 35% at 70% 38%,rgba(75,140,255,.22),transparent 70%),radial-gradient(30% 28% at 28% 62%,rgba(143,216,255,.12),transparent 70%),radial-gradient(60% 50% at 50% 50%,rgba(30,50,110,.25),transparent 75%);animation:xodrift 26s ease-in-out infinite alternate}
+.xf-no-field .xo-glow{opacity:1}
+@keyframes xodrift{from{transform:translate3d(-3%,-2%,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.08)}}
+.xo-field{position:absolute;inset:0;width:100%;height:100%}
+.xo-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,7,10,.55) 0%,rgba(6,7,10,0) 22%,rgba(6,7,10,0) 48%,rgba(6,7,10,.78) 82%,#06070a 100%),linear-gradient(90deg,rgba(6,7,10,.55) 0%,rgba(6,7,10,0) 60%)}
+.xf-from{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;opacity:calc(1 - var(--out));transform:translate3d(0,calc(var(--out) * -48px),0) scale(calc(1 - var(--out) * .05));will-change:opacity,transform}
+.xf-mark{width:64px;height:64px;border-radius:18px;margin-bottom:26px;background:conic-gradient(from 210deg,var(--a1),var(--a2),var(--a3),var(--a1));box-shadow:0 0 50px rgba(168,85,247,.55);transform:rotate(calc(45deg + var(--out) * 90deg)) scale(.82)}
+.xf-from h2{font-size:clamp(40px,8vw,96px);margin-top:16px;font-weight:700;max-width:12ch}
+.xf-hint{margin-top:28px;color:var(--mut);font-size:20px;animation:xfbob 1.8s ease-in-out infinite}
+@keyframes xfbob{50%{transform:translateY(6px)}}
+.xo{position:absolute;inset:0;display:flex;flex-direction:column;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6;color:#e9edf3;text-align:left}
+.xo-nav,.xo-copy{width:100%;max-width:1120px;margin-left:auto;margin-right:auto;padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
+.xo-nav{display:flex;align-items:center;justify-content:space-between;padding-top:max(22px,env(safe-area-inset-top));padding-bottom:12px;opacity:var(--nav);transform:translate3d(0,calc((1 - var(--nav)) * -14px),0)}
+.xo-brand{display:inline-flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.02em}
+.xo-mark{width:28px;height:28px;color:#e9edf3}
+.xo-links{display:flex;gap:26px;font:14px/1.6 ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;letter-spacing:.04em;color:#8e97a7}
+.xo-links span{padding:6px 0}
+.xo-copy{margin-top:auto;padding-top:80px;padding-bottom:clamp(64px,11vh,120px);padding-bottom:calc(clamp(64px,11vh,120px) + 100vh - 100svh);opacity:var(--in);transform:translate3d(0,calc((1 - var(--in)) * 28px),0);will-change:opacity,transform}
+.xo-eyebrow{font:13px/1.6 ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#8fd8ff}
+.xo-h1{font-size:clamp(64px,17vw,148px);line-height:.92;letter-spacing:-.045em;font-weight:600;margin:.18em 0 .22em;background:linear-gradient(180deg,#fff 30%,#b9c6da 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.xo-mission{font-size:clamp(19px,2.3vw,26px);line-height:1.4;color:#cdd4df;max-width:30ch;margin:0 0 34px;letter-spacing:-.01em}
+.xo-cta{display:inline-flex;align-items:center;gap:10px;font:14px/1.6 ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;letter-spacing:.04em;text-decoration:none;color:#e9edf3;padding:12px 18px;border:1px solid rgba(170,200,255,.25);border-radius:999px;background:rgba(10,14,22,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:border-color .2s,background .2s}
+.xo-cta:hover{border-color:#8fd8ff;background:rgba(20,30,46,.6)}
+.xo-cta:focus-visible{outline-color:#8fd8ff}
+.xf:not([data-end]) .xo-cta{pointer-events:none}
+html.xf-js .nav{transform:translate3d(0,calc(var(--xnav,0) * -110%),0)}
+.xf-rm .xf-from,.xf-rm .xf-bg-to,.xf-rm .xo-copy,.xf-rm .xo-nav{transition:opacity .5s ease;transform:none}
+@media (max-width:760px){
+ .xo{font-size:16px}
+ .xo-links{gap:18px;font-size:13px}
+ .xo-veil{background:linear-gradient(180deg,rgba(6,7,10,.5) 0%,rgba(6,7,10,0) 20%,rgba(6,7,10,0) 40%,rgba(6,7,10,.82) 78%,#06070a 100%)}
+}
+/* arriving from omnidraglobal.com: start on the frame its studio section ended on, then settle */
+.arrive-ghost{display:none}
+.hero-actions{position:relative}
+.arrive .arrive-ghost{display:inline-flex;position:absolute;left:0;top:0;pointer-events:none}
+.arrive .hero-actions>a,.arrive main>section:not(.hero),.arrive .foot{opacity:0}
+.arrive.arrive-go .arrive-ghost{opacity:0;transition:opacity .7s ease}
+.arrive.arrive-go .hero-actions>a,.arrive.arrive-go main>section:not(.hero),.arrive.arrive-go .foot{opacity:1;transition:opacity .8s ease .1s}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
