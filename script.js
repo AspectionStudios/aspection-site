@@ -3,9 +3,9 @@ const G=window.GALLERY||{},dlg=document.getElementById('lightbox'),img=document.
 title=document.getElementById('lb-title'),count=document.getElementById('lb-count'),
 prev=dlg.querySelector('.lb-prev'),next=dlg.querySelector('.lb-next');
 let cur=null,i=0;
-function show(){const p=G[cur];img.src=p.images[i];img.alt=p.title+' — image '+(i+1);count.textContent=(i+1)+' / '+p.images.length;
+function show(){const p=G[cur];img.src=p.images[i];img.alt=p.alts?p.alts[i]:p.title+' — image '+(i+1);if(p.titles)title.textContent=p.titles[i];count.textContent=(i+1)+' / '+p.images.length;
  const multi=p.images.length>1;prev.hidden=next.hidden=!multi;}
-document.querySelectorAll('[data-project]').forEach(b=>b.addEventListener('click',()=>{cur=b.dataset.project;i=0;title.textContent=G[cur].title;show();
+document.querySelectorAll('[data-project]').forEach(b=>b.addEventListener('click',()=>{cur=b.dataset.project;i=+(b.dataset.index||0);title.textContent=G[cur].title;show();
  if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}));
 prev.addEventListener('click',()=>{const n=G[cur].images.length;i=(i-1+n)%n;show();});
 next.addEventListener('click',()=>{const n=G[cur].images.length;i=(i+1)%n;show();});
@@ -15,7 +15,7 @@ document.addEventListener('keydown',e=>{if(!dlg.open)return;if(e.key==='ArrowRig
 let sx=0;img.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
 img.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)(d<0?next:prev).click();});
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{rootMargin:'0px 0px -8% 0px'});
- document.querySelectorAll('.section-head,.feature,.work-card,.service,.studio-art,.studio-body,.contact > *').forEach(el=>{el.classList.add('reveal');io.observe(el);});}
+ document.querySelectorAll('.section-head,.feature,.work-card,.art-tile,.service,.studio-art,.studio-body,.contact > *').forEach(el=>{el.classList.add('reveal');io.observe(el);});}
 })();
 
 /* Cross-site crossfade (Aspection -> Omnidra) + arrival from omnidraglobal.com. Vanilla, rAF-throttled. */
