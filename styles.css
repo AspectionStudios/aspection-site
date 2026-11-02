@@ -182,3 +182,17 @@ html.xf-js .nav{transform:translate3d(0,calc(var(--xnav,0) * -110%),0)}
 .arrive.arrive-go .arrive-ghost{opacity:0;transition:opacity .7s ease}
 .arrive.arrive-go .hero-actions>a,.arrive.arrive-go main>section:not(.hero),.arrive.arrive-go .foot{opacity:1;transition:opacity .8s ease .1s}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+/* Tab vs the Monk: a looping cinematic video under the Rift Rascal feature (web/rr-fight/). Decorative: no pointer events, except the small sound toggle. */
+.rr-fight{position:relative;margin-top:28px;aspect-ratio:2.2/1;border-radius:28px;overflow:hidden;background:#07060d;border:1px solid var(--line);box-shadow:0 30px 80px -40px rgba(168,85,247,.55);pointer-events:none;isolation:isolate}
+.rr-fight[hidden]{display:none}
+.rr-fight::before{content:"";position:absolute;inset:-1px;border-radius:28px;padding:1px;background:linear-gradient(135deg,rgba(168,85,247,.8),transparent 40%,rgba(34,211,238,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:3}
+.rr-fight::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(7,6,13,.55));z-index:2}
+.rr-fight-poster,.rr-fight-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 52%;display:block}
+.rr-fight-video{opacity:0;transition:opacity .6s;z-index:1}
+.rr-fight.on .rr-fight-video{opacity:1}
+.rr-fight-sound{position:absolute;right:14px;bottom:14px;z-index:4;pointer-events:auto;display:grid;place-items:center;width:38px;height:38px;padding:0;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(10,8,20,.55);color:#fff;cursor:pointer;opacity:.75;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:opacity .2s,border-color .2s,box-shadow .2s}
+.rr-fight-sound[hidden]{display:none}
+.rr-fight-sound:hover,.rr-fight-sound:focus-visible{opacity:1;border-color:rgba(168,85,247,.9);box-shadow:0 0 18px rgba(168,85,247,.55)}
+.rr-fight-sound:focus-visible{outline:2px solid #c084fc;outline-offset:2px}
+.rr-fight-sound .rr-snd-on{display:none}.rr-fight-sound[aria-pressed="true"] .rr-snd-on{display:inline}.rr-fight-sound[aria-pressed="true"] .rr-snd-off{display:none}
+@media (max-width:600px){.rr-fight{aspect-ratio:16/10;margin-top:20px;border-radius:20px}.rr-fight::before{border-radius:20px}.rr-fight-sound{right:10px;bottom:10px;width:34px;height:34px}}
