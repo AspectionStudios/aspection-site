@@ -197,6 +197,8 @@ html.xf-js .nav{transform:translate3d(0,calc(var(--xnav,0) * -110%),0)}
 .rr-fight-sound .rr-snd-on{display:none}.rr-fight-sound[aria-pressed="true"] .rr-snd-on{display:inline}.rr-fight-sound[aria-pressed="true"] .rr-snd-off{display:none}
 @media (max-width:600px){.rr-fight{aspect-ratio:16/10;margin-top:20px;border-radius:20px}.rr-fight::before{border-radius:20px}.rr-fight-sound{right:10px;bottom:10px;width:34px;height:34px}}
 
-.token-art{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(120% 120% at 30% 20%,#3b2a6d 0%,#171233 55%,#0f0d1d 100%);text-decoration:none;padding:32px;text-align:center}
-.token-big{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(44px,5.2vw,76px);line-height:1;color:#fff;letter-spacing:-.01em}
-.token-small{color:var(--a2);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.14em}
+.countdown{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap}
+.countdown div{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:14px;padding:10px 0;min-width:64px;text-align:center}
+.countdown span{display:block;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:26px;color:#fff;line-height:1}
+.countdown small{display:block;margin-top:4px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--a2)}
+.cd-note{color:var(--a2);font-weight:600;font-size:14px}
