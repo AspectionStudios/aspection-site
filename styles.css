@@ -196,3 +196,7 @@ html.xf-js .nav{transform:translate3d(0,calc(var(--xnav,0) * -110%),0)}
 .rr-fight-sound:focus-visible{outline:2px solid #c084fc;outline-offset:2px}
 .rr-fight-sound .rr-snd-on{display:none}.rr-fight-sound[aria-pressed="true"] .rr-snd-on{display:inline}.rr-fight-sound[aria-pressed="true"] .rr-snd-off{display:none}
 @media (max-width:600px){.rr-fight{aspect-ratio:16/10;margin-top:20px;border-radius:20px}.rr-fight::before{border-radius:20px}.rr-fight-sound{right:10px;bottom:10px;width:34px;height:34px}}
+
+.token-art{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(120% 120% at 30% 20%,#3b2a6d 0%,#171233 55%,#0f0d1d 100%);text-decoration:none;padding:32px;text-align:center}
+.token-big{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(44px,5.2vw,76px);line-height:1;color:#fff;letter-spacing:-.01em}
+.token-small{color:var(--a2);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.14em}
